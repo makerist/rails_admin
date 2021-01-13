@@ -159,7 +159,7 @@ appraise "rails-5.1" do
 end
 
 appraise "rails-5.2" do
-  gem 'rails', '~> 5.2.0'
+  gem 'rails', '~> 5.2.0', github: 'rails/rails', branch: '5-2-stable'
   gem 'sass-rails', '~> 5.0'
   gem 'devise', '~> 4.4'
 
@@ -170,6 +170,12 @@ appraise "rails-5.2" do
   group :active_record do
     gem 'pg', '>= 1.0.0', platforms: :ruby
     gem 'paper_trail', '>= 5.0'
+
+    platforms :jruby do
+      gem 'activerecord-jdbcmysql-adapter', '~> 52.0'
+      gem 'activerecord-jdbcpostgresql-adapter', '~> 52.0'
+      gem 'activerecord-jdbcsqlite3-adapter', '~> 52.0'
+    end
   end
 
   group :mongoid do
