@@ -47,6 +47,7 @@ module RailsAdmin
     config.after_initialize do |app|
       has_session_store = ::Rails.version < '5.0' || app.config.middleware.to_a.any? do |m|
         m.klass.try(:<=, ActionDispatch::Session::AbstractStore) ||
+          m.klass.try(:<=, ActionDispatch::Session::AbstractSecureStore) ||
           m.klass.name =~ /^ActionDispatch::Session::/
       end
       loaded = app.config.middleware.to_a.map(&:name)
