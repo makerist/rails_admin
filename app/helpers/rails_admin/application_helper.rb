@@ -103,7 +103,7 @@ module RailsAdmin
         li = content_tag :li, data: {model: model_param} do
           link_to nav_icon + capitalize_first_letter(node.label_plural), url, class: "pjax#{level_class}"
         end
-        li + navigation(nodes_stack, nodes_stack.select { |n| n.parent.to_s == node.abstract_model.model_name }, level + 1)
+        li + navigation(nodes_stack, nodes_stack.select { |n| n.to_s == node.abstract_model.model_name }, level + 1)
       end.join.html_safe
     end
 
