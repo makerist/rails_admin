@@ -19,8 +19,8 @@ module RailsAdmin
           object.assign_attributes(attributes) if attributes
         end
 
-        def save(options = {validate: true})
-          object.save(options)
+        def save(validate: true, **kwargs)
+          object.save(validate: validate, **kwargs)
         end
 
         def method_missing(name, *args, &block)
